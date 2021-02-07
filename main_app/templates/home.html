@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wacky Widget</title>
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+<body>
+    <h1 style="text-align:center;">Wacky Widget</h1>
+
+    
+
+    
+    <table>
+        <tr>
+            <thread>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </thread>
+        </tr>
+
+        {% for wacky in Wacky %}
+
+            <tr>
+                <td>{{wacky.description}}</td>
+                <td>{{wacky.quantity}}</td>
+                <td><a href="{% url 'delete_wacky' wacky.id %}">X</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+
+   
+
+    <from action="" method="POST">
+        {%csrf_token%}
+        {{form}}
+        <button type="submit"><h4><a href="{% url 'create_wacky' %}">ADD WIDGET</a></h4></button>
+    </from>
+</body>
+</html>
